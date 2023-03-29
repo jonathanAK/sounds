@@ -15,6 +15,7 @@ function SingleNote() {
 
     const increaseQuestionCount = ()=> setAsked(asked+1);
     const increaseCorrectCount = ()=> setCorrect(correct+1);
+
     const startNewGame = ()=>{
         startSound();
         setShowSettings(false);
@@ -39,6 +40,7 @@ function SingleNote() {
                 playableDegrees,
                 increaseCorrectCount,
                 increaseQuestionCount,
+                asked, correct
             }}
             selectedOctave={octave}
         />;

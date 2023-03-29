@@ -6,7 +6,7 @@ import scales from "../../services/scales.json";
 import {Switch} from "@mui/material";
 import repeatIcon from "../../assets/repeat.png";
 
-function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount}) {
+function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount, asked, correct}) {
     const [degree, setDegree] = useState(-1);
     const [message, setMessage] = useState('');
     const [octave, setOctave] = useState(selectedOctave);
@@ -80,6 +80,9 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
             <div style={{height: 50, lineHeight: 1}}><h2>{message}</h2></div>
             <div style={{width: 600, height: 300}}>
                 <Piano callback={pianoPressed} octave={octave} mute={mutePiano}/>
+            </div><div style={{display:'flex', justifyContent:'space-around', width:'100%'}}>
+                <h1 style={{color:'green'}}>{correct}</h1>
+                <h1 style={{color:'red'}}>{asked-correct}</h1>
             </div>
         </div>
     )
