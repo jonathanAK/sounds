@@ -1,5 +1,5 @@
 import './App.css';
-import SingleNote from "./pages/singleNote.jsx";
+import SingleNote from "./pages/singleNote/singleNote.jsx";
 
 function App() {
 
