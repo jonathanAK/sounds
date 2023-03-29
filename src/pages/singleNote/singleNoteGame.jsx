@@ -11,6 +11,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
     const [message, setMessage] = useState('');
     const [octave, setOctave] = useState(selectedOctave);
     const [manualScore, setManualScore] = useState(false);
+    const [mutePiano, setMutePiano] = useState(false);
 
     const newNote = () => {
         const newDegree = playableDegrees[Math.floor(Math.random() * playableDegrees.length)];
@@ -61,7 +62,6 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
                     </Button>
             </>}
             </div>
-            <Button onClick={repeat}><img src={repeatIcon} style={{height: 30, margin: 30}}/></Button>
             <span>
                 Score Manually
                     <Switch
@@ -69,9 +69,17 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
                         onChange={() => setManualScore(!manualScore)}
                     />
             </span>
-            <div style={{height: 20, lineHeight: 1}}>{message}</div>
+            <Button onClick={repeat}><img src={repeatIcon} style={{height: 30, margin: 30}}/></Button>
+            <span>
+                Mute Piano
+                    <Switch
+                        checked={mutePiano}
+                        onChange={() => setMutePiano(!mutePiano)}
+                    />
+            </span>
+            <div style={{height: 50, lineHeight: 1}}><h2>{message}</h2></div>
             <div style={{width: 600, height: 300}}>
-                <Piano callback={pianoPressed} octave={octave}/>
+                <Piano callback={pianoPressed} octave={octave} mute={mutePiano}/>
             </div>
         </div>
     )

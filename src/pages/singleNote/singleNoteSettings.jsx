@@ -58,7 +58,7 @@ function SingleNoteSettings({startNewGame, scale, setScale, playableDegrees, set
                 {scales[scale].map((note, key) => <NoteSwitch key={note}
                 note={note} degree={key+1} setNotes={setPlayableDegrees} selectedNotes={playableDegrees}/>)}
             </div>
-            <Button onClick={startNewGame} variant="outlined">התחל</Button>
+            <Button onClick={startNewGame} variant="outlined" sx={{marginTop:10}}>Start</Button>
         </div>
     )
 }
