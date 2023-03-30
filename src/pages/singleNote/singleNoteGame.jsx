@@ -33,7 +33,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
         setTimeout(() => {
             setMessage('');
             newNote();
-        }, 1500);
+        }, manual? 0 : 1500);
         if(correct){
             increaseCorrectCount();
         }
