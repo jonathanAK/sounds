@@ -30,10 +30,9 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
     const checkAnswer = (noteNames, manual) => {
         increaseQuestionCount();
         const correct = !noteNames ? manual : noteNames.includes(scales[scale][degree - 1]);
-        setTimeout(() => {
-            setMessage('');
-            newNote();
-        }, manual? 0 : 1500);
+        const delay = mutePiano ? 0 : 1500;
+        setTimeout(newNote, delay);
+        setTimeout(() => setMessage(''), 1500);
         if(correct){
             increaseCorrectCount();
         }
