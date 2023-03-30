@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import {FormControl, InputLabel, MenuItem, Select, Switch} from "@mui/material";
 import scales from '../../services/scales.json';
 import {useEffect} from "react";
+import {useStyles} from "./singleNote.css.js";
 
 const NoteSwitch = ({note, setNotes, selectedNotes, degree}) => {
     const noteOn = selectedNotes.includes(degree);
@@ -19,11 +20,12 @@ const NoteSwitch = ({note, setNotes, selectedNotes, degree}) => {
 }
 
 function SingleNoteSettings({startNewGame, scale, setScale, playableDegrees, setPlayableDegrees, octave, setOctave,}) {
-    useEffect(()=>{setPlayableDegrees([1,3,5])},[scale])
+    useEffect(()=>{setPlayableDegrees([1,3,5])},[scale]);
+    const classes = useStyles();
     return (
         <div>
-            <div>
-                <FormControl sx={{m: 1, minWidth: 60}} size="small">
+            <div className={classes.noteArea}>
+                <FormControl className={classes.selectFromControl} size="small">
                     <InputLabel id="scale">Scale</InputLabel>
                     <Select
                         labelId="scale"
@@ -36,7 +38,7 @@ function SingleNoteSettings({startNewGame, scale, setScale, playableDegrees, set
                             Object.keys(scales).map((key) => <MenuItem value={key} key={key}>{key}</MenuItem>)
                         }
                     </Select>
-                </FormControl><FormControl sx={{m: 1, minWidth: 100}} size="small">
+                </FormControl><FormControl  className={classes.selectFromControl} size="small">
                 <InputLabel id="Octave">Octave</InputLabel>
                 <Select
                     labelId="octave"
@@ -54,11 +56,11 @@ function SingleNoteSettings({startNewGame, scale, setScale, playableDegrees, set
                 </Select>
             </FormControl>
             </div>
-            <div style={{display:'flex'}}>
+            <div className={classes.noteArea}>
                 {scales[scale].map((note, key) => <NoteSwitch key={note}
                 note={note} degree={key+1} setNotes={setPlayableDegrees} selectedNotes={playableDegrees}/>)}
             </div>
-            <Button onClick={startNewGame} variant="outlined" sx={{marginTop:10}}>Start</Button>
+            <Button onClick={startNewGame} variant="outlined" className={classes.startButton}>Start</Button>
         </div>
     )
 }

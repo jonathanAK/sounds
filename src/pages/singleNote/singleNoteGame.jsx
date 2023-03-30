@@ -5,6 +5,7 @@ import Piano from "../../components/piano.jsx";
 import scales from "../../services/scales.json";
 import {Switch} from "@mui/material";
 import repeatIcon from "../../assets/repeat.png";
+import {useStyles} from "./singleNote.css.js";
 
 function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount, asked, correct}) {
     const [degree, setDegree] = useState(-1);
@@ -12,6 +13,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
     const [octave, setOctave] = useState(selectedOctave);
     const [manualScore, setManualScore] = useState(false);
     const [mutePiano, setMutePiano] = useState(false);
+    const classes = useStyles();
 
     const newNote = () => {
         const newDegree = playableDegrees[Math.floor(Math.random() * playableDegrees.length)];
@@ -52,7 +54,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
 
     return (
         <div>
-            <div style={{height: 80, display: 'flex', width: 300, justifyContent: 'space-around', margin: 'auto'}}>
+            <div className={classes.gameControls}>
             {manualScore && <>
                     <Button variant="contained" color="success" onClick={() => checkAnswer(null, true)}>
                         Success
@@ -69,7 +71,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
                         onChange={() => setManualScore(!manualScore)}
                     />
             </span>
-            <Button onClick={repeat}><img src={repeatIcon} style={{height: 30, margin: 30}}/></Button>
+            <Button onClick={repeat}><img src={repeatIcon} className={classes.repeatButton}/></Button>
             <span>
                 Mute Piano
                     <Switch
@@ -77,12 +79,12 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
                         onChange={() => setMutePiano(!mutePiano)}
                     />
             </span>
-            <div style={{height: 50, lineHeight: 1}}><h2>{message}</h2></div>
-            <div style={{width: 600, height: 300}}>
+            <div className={classes.message}><h2>{message}</h2></div>
+            <div className={classes.piano}>
                 <Piano callback={pianoPressed} octave={octave} mute={mutePiano}/>
-            </div><div style={{display:'flex', justifyContent:'space-around', width:'100%'}}>
-                <h1 style={{color:'green'}}>{correct}</h1>
-                <h1 style={{color:'red'}}>{asked-correct}</h1>
+            </div><div className={classes.scoreArea}>
+                <h1 className={classes.scoreCorrect}>{correct}</h1>
+                <h1 className={classes.scoreWrong}>{asked-correct}</h1>
             </div>
         </div>
     )

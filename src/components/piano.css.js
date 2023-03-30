@@ -5,7 +5,7 @@ const key = {
     listStyle: 'none',
     position: 'relative',
     float: 'left',
-    margin: '0 0 0 calc(-100%/32)',
+    margin: '0 0 0 calc(-100%/30)',
 };
 
 const white = {
@@ -55,7 +55,7 @@ export const useStyles = createUseStyles({
     c: {
         ...white,
         borderRadius: '5px 0 5px 5px',
-        margin: '0 0 0 calc(100%/48)',
+        margin: '0 0 0 calc(100%/50)',
     },
     cs: {
         ...black,
