@@ -34,9 +34,11 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
             setMessage('');
             newNote();
         }, 1500);
+        if(correct){
+            setMessage('correct');
+        }
         if (!noteNames) return setMessage('');
         if (correct) {
-            setMessage('correct');
             increaseCorrectCount();
             return;
         }
