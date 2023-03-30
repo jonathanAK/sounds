@@ -35,11 +35,11 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
             newNote();
         }, 1500);
         if(correct){
-            setMessage('correct');
+            increaseCorrectCount();
         }
         if (!noteNames) return setMessage('');
         if (correct) {
-            increaseCorrectCount();
+            setMessage('correct');
             return;
         }
         setMessage(`wrong played: ${scales[scale][degree - 1]} you pressed: ${noteNames[0]}`);
