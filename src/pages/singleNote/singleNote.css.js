@@ -31,7 +31,10 @@ export const useStyles = createUseStyles({
     scoreWrong: {color: 'red'},
     selectFromControl: {
         margin: 1,
-        minWidth: 60
+        minWidth: 60,
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
     },
     startButton:{
         marginTop:10
@@ -41,5 +44,8 @@ export const useStyles = createUseStyles({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
     },
+    repeatText:{
+        margin:0,
+    }
 })
 

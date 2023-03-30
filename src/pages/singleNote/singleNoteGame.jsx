@@ -7,7 +7,7 @@ import {Switch} from "@mui/material";
 import repeatIcon from "../../assets/repeat.png";
 import {useStyles} from "./singleNote.css.js";
 
-function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount, asked, correct}) {
+function SingleNoteGame({scale, noRepeat, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount, asked, correct}) {
     const [degree, setDegree] = useState(-1);
     const [message, setMessage] = useState('');
     const [octave, setOctave] = useState(selectedOctave);
@@ -18,6 +18,7 @@ function SingleNoteGame({scale, playableDegrees, selectedOctave = 4, increaseQue
     const newNote = () => {
         const newDegree = playableDegrees[Math.floor(Math.random() * playableDegrees.length)];
         const newOctave = selectedOctave < 0 ? Math.floor(Math.random() * 5 + 3) : selectedOctave;
+        if(noRepeat && degree === newDegree && octave === newOctave) return newNote();
         setDegree(newDegree);
         setOctave(newOctave);
         playNoteOnScale({scale, degree: newDegree, octave: newOctave});

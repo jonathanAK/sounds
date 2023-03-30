@@ -2,14 +2,15 @@ import * as Tone from 'tone';
 import scales from './scales.json';
 
 Tone.context.lookAhead=0;
-let synth;
+let synth, polySynth;
 let lastPlay = 0;
 
 const minMaxNum = (min,max,num)=> Math.max(min,Math.min(max,Math.floor(num)));
 
 export const startSound = () => {
     Tone.start();
-    synth = new Tone.PolySynth().toDestination();
+    synth = new Tone.Synth().toDestination();
+    polySynth = new Tone.PolySynth(Tone.Synth).toDestination();
 }
 
 export const makeSound = ({note = 'C', octave = 4}) => {
@@ -18,7 +19,7 @@ export const makeSound = ({note = 'C', octave = 4}) => {
         const startTime = Tone.now()
         if (!startTime > lastPlay) return;
         lastPlay = startTime;
-        synth.triggerAttackRelease([note + octave], "8n");
+        synth.triggerAttackRelease(note + octave, "8n");
     } catch (e) {
         console.error(e);
     }
