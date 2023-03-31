@@ -6,6 +6,9 @@ import scales from "../../services/scales.json";
 import {Switch} from "@mui/material";
 import repeatIcon from "../../assets/repeat.png";
 import {useStyles} from "./singleNote.css.js";
+import ManualScore from "./components/manualScore.jsx";
+
+let delayedNoteTimeOut;
 
 function SingleNoteGame({scale, noRepeat, playableDegrees, selectedOctave = 4, increaseQuestionCount, increaseCorrectCount, asked, correct}) {
     const [degree, setDegree] = useState(-1);
@@ -28,11 +31,15 @@ function SingleNoteGame({scale, noRepeat, playableDegrees, selectedOctave = 4, i
         playNoteOnScale({scale, degree, octave})
     };
 
+    const playNextNote = () =>{
+        const delay = mutePiano ? 0 : 1000;
+        clearTimeout(delayedNoteTimeOut);
+        delayedNoteTimeOut = setTimeout(newNote, delay);
+    };
     const checkAnswer = (noteNames, manual) => {
         increaseQuestionCount();
         const correct = !noteNames ? manual : noteNames.includes(scales[scale][degree - 1]);
-        const delay = mutePiano ? 0 : 1000;
-        setTimeout(newNote, delay);
+        playNextNote();
         setTimeout(() => setMessage(''), 1500);
         if(correct){
             increaseCorrectCount();
@@ -57,14 +64,7 @@ function SingleNoteGame({scale, noRepeat, playableDegrees, selectedOctave = 4, i
     return (
         <div>
             <div className={classes.gameControls}>
-            {manualScore && <>
-                    <Button variant="contained" color="success" onClick={() => checkAnswer(null, true)}>
-                        Success
-                    </Button>
-                    <Button variant="outlined" color="error" onClick={() => checkAnswer(null, false)}>
-                        wrong
-                    </Button>
-            </>}
+                {manualScore && <ManualScore {...{checkAnswer}} /> }
             </div>
             <span>
                 Score Manually

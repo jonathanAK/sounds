@@ -1,15 +1,22 @@
 import * as Tone from 'tone';
 import scales from './scales.json';
+import samples from './sample.json';
 
+const sampleUrls =  Object.keys(samples.noteMapping).reduce((obj,key)=>({...obj,[key]:samples.baseUrl+samples.noteMapping[key]}),{})
+new Tone.Buffers (sampleUrls , ()=>console.log('sounds loaded') )
 Tone.context.lookAhead=0;
-let synth, polySynth;
+let synth, polySynth, piano;
 let lastPlay = 0;
 
 const minMaxNum = (min,max,num)=> Math.max(min,Math.min(max,Math.floor(num)));
 
 export const startSound = () => {
     Tone.start();
-    synth = new Tone.Synth().toDestination();
+    // synth = new Tone.Synth({}).toDestination();
+    synth = new Tone.Sampler({
+        urls: samples.noteMapping,
+        baseUrl: samples.baseUrl,
+    }).toDestination();
     polySynth = new Tone.PolySynth(Tone.Synth).toDestination();
 }
 
