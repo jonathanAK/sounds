@@ -71,7 +71,7 @@ export const useStyles = createUseStyles({
     },
     f: {
         ...white,
-        margin: '0 0 0 4px',
+        margin: '0 0 0 1px',
     },
     fs: {
         ...black,
