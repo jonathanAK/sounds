@@ -18,7 +18,7 @@ function SingleNote() {
     const increaseCorrectCount = ()=> setCorrect(correct+1);
 
     const startNewGame = ()=>{
-        startSound();
+        startSound({key:scale,octave});
         setShowSettings(false);
         setCorrect(0);
         setAsked(0);
