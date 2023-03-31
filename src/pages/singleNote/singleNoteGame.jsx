@@ -58,7 +58,7 @@ function SingleNoteGame({scale, noRepeat, playableDegrees, selectedOctave = 4, i
     }
 
     useEffect(() => {
-        setTimeout(newNote,500);
+        setTimeout(newNote,1500);
     }, []);
 
     return (
