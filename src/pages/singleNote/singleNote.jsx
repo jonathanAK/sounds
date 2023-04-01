@@ -9,7 +9,6 @@ function SingleNote() {
     const [playableDegrees, setPlayableDegrees] = useState([1,3,5]);
     const [correct, setCorrect] =useState(0);
     const [asked, setAsked] = useState(0);
-    const [startTime, setStartTime] =useState(0);
     const [octave, setOctave] = useState(4);
     const [noRepeat, setNoRepeat] = useState(false);
 
@@ -22,7 +21,6 @@ function SingleNote() {
         setShowSettings(false);
         setCorrect(0);
         setAsked(0);
-        setStartTime(Date.now());
     }
 
 
@@ -41,6 +39,7 @@ function SingleNote() {
                 scale,
                 playableDegrees,
                 noRepeat,
+                setShowSettings,
                 increaseCorrectCount,
                 increaseQuestionCount,
                 asked, correct
