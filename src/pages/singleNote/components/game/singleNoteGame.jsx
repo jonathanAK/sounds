@@ -1,11 +1,11 @@
-import {playNoteOnScale} from '../../services/midi';
+import {playNoteOnScale} from '../../../../services/midi';
 import {useEffect, useState} from "react";
-import Piano from "../../components/piano.jsx";
-import scales from "../../services/scales.json";
-import {useStyles} from "./singleNote.css.js";
-import ScoreDialog from "./components/scoreDialog.jsx";
-import ScoreArea from "./components/scoreArea";
-import ControlsArea from "./components/controlsArea.jsx";
+import Piano from "../../../../components/piano.jsx";
+import scales from "../../../../services/scales.json";
+import {useStyles} from "../../singleNote.css.js";
+import ScoreDialog from "./scoreDialog.jsx";
+import ScoreArea from "./scoreArea";
+import ControlsArea from "./controlsArea.jsx";
 
 let delayedNoteTimeOut;
 let score = {};

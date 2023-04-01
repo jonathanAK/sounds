@@ -3,21 +3,7 @@ import {FormControl, InputLabel, MenuItem, Select, Switch} from "@mui/material";
 import scales from '../../../../services/scales.json';
 import {useEffect} from "react";
 import {useStyles} from "../../singleNote.css.js";
-
-const NoteSwitch = ({note, setNotes, selectedNotes, degree}) => {
-    const noteOn = selectedNotes.includes(degree);
-    const onChange = () => {
-        if (!noteOn) return setNotes([...selectedNotes, degree]);
-        setNotes(selectedNotes.filter(specificDegree => specificDegree !== degree))
-    }
-    return <span>
-        <div><h4>{note}</h4></div>
-        <Switch
-            checked={noteOn}
-            onChange={onChange}
-        />
-    </span>
-}
+import NoteSwitch from "./noteSwitch.jsx";
 
 function SingleNoteSettings({
                                 startNewGame,
