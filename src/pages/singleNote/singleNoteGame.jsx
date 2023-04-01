@@ -70,8 +70,9 @@ function SingleNoteGame({
 
     const finishGame = () => {
         setFinished(true);
-        const time = (Date.now - started)/1000;
-        score = {correct, asked, time};
+        const time = (Date.now() - started)/1000;
+        const difficulty = (1.5^(playableDegrees.length -1)) -1;
+        score = {correct, asked, time, difficulty};
     };
 
     const onCloseScore = () =>{
