@@ -1,8 +1,8 @@
-import {useStyles} from "../singleNote.css.js";
+import {useStyles} from "../../singleNote.css.js";
 import ManualScore from "./manualScore.jsx";
 import {Switch} from "@mui/material";
 import Button from "@mui/material/Button";
-import repeatIcon from "../../../assets/repeat.png";
+import repeatIcon from "../../../../assets/repeat.png";
 
 function ControlsArea({manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame}) {
     const classes = useStyles();

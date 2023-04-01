@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import {FormControl, InputLabel, MenuItem, Select, Switch} from "@mui/material";
-import scales from '../../services/scales.json';
+import scales from '../../../../services/scales.json';
 import {useEffect} from "react";
-import {useStyles} from "./singleNote.css.js";
+import {useStyles} from "../../singleNote.css.js";
 
 const NoteSwitch = ({note, setNotes, selectedNotes, degree}) => {
     const noteOn = selectedNotes.includes(degree);

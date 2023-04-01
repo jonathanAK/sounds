@@ -1,6 +1,6 @@
 import {useState} from "react";
-import SingleNoteSettings from "./singleNoteSettings.jsx";
-import SingleNoteGame from "./singleNoteGame.jsx";
+import SingleNoteSettings from "./components/setting/singleNoteSettings.jsx";
+import SingleNoteGame from "./components/game/singleNoteGame.jsx";
 import {startSound} from "../../services/midi.js";
 
 function SingleNote() {
