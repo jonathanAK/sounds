@@ -32,7 +32,7 @@ function SingleNoteGame({
 
     const newNote = () => {
         const newDegree = playableDegrees[Math.floor(Math.random() * playableDegrees.length)];
-        const newOctave = selectedOctave < 0 ? Math.floor(Math.random() * 5 + 3) : selectedOctave;
+        const newOctave = selectedOctave < 0 ? Math.floor((Math.random() * 4) + 3) : selectedOctave;
         if (noRepeat && degree === newDegree && octave === newOctave) return newNote();
         setDegree(newDegree);
         setOctave(newOctave);

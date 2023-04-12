@@ -25,9 +25,10 @@ export const startSound = async ({onLoaded= ()=>false}) => {
 }
 
 const getMajorChord = ({key, chordNum, octave}) => {
-    const note1 = scales[key][(chordNum - 1) % 7] + octave;
-    const note2 = scales[key][(chordNum + 1) % 7] + ((chordNum + 1) < 8 ? octave : (octave + 1));
-    const note3 = scales[key][(chordNum + 3) % 7] + ((chordNum + 3) < 8 ? octave : (octave + 1));
+    const adjustedOctave = octave > 0 ? octave : 4;
+    const note1 = scales[key][(chordNum - 1) % 7] + adjustedOctave;
+    const note2 = scales[key][(chordNum + 1) % 7] + ((chordNum + 1) < 8 ? adjustedOctave : (adjustedOctave + 1));
+    const note3 = scales[key][(chordNum + 3) % 7] + ((chordNum + 3) < 8 ? adjustedOctave : (adjustedOctave + 1));
     return [note1, note2, note3];
 }
 
