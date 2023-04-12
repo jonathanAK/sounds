@@ -14,7 +14,8 @@ function SingleNoteSettings({
                                 octave,
                                 setOctave,
                                 noRepeat,
-                                setNoRepeat
+                                setNoRepeat,
+                                soundsLoaded
                             }) {
     useEffect(() => {
         setPlayableDegrees([1, 3, 5])
@@ -67,7 +68,7 @@ function SingleNoteSettings({
                                                               note={note} degree={key + 1} setNotes={setPlayableDegrees}
                                                               selectedNotes={playableDegrees}/>)}
             </div>
-            <Button onClick={startNewGame} variant="outlined" className={classes.startButton}>Start</Button>
+            <Button onClick={startNewGame} disabled={!soundsLoaded} variant="outlined" className={classes.startButton}>{!!soundsLoaded ? 'Start' : 'Loading'}</Button>
         </div>
     )
 }

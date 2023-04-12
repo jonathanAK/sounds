@@ -3,7 +3,7 @@ import SingleNoteSettings from "./components/setting/singleNoteSettings.jsx";
 import SingleNoteGame from "./components/game/singleNoteGame.jsx";
 import {startSound} from "../../services/midi.js";
 
-function SingleNote({setCurrentPage}) {
+function SingleNote({setCurrentPage, soundsLoaded}) {
     const [showSettings, setShowSettings] = useState(true);
     const [scale, setScale] = useState('C');
     const [playableDegrees, setPlayableDegrees] = useState([1,3,5]);
@@ -32,6 +32,7 @@ function SingleNote({setCurrentPage}) {
                 playableDegrees, setPlayableDegrees,
                 noRepeat, setNoRepeat,
                 octave, setOctave,
+                soundsLoaded
             }}
         /> :
         <SingleNoteGame

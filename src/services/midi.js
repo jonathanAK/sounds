@@ -6,7 +6,7 @@ const sampleUrls = Object.keys(samples.noteMapping).reduce((obj, key) => ({
     ...obj,
     [key]: samples.baseUrl + samples.noteMapping[key]
 }), {})
-new Tone.Buffers(sampleUrls, () => console.log('sounds loaded'))
+new Tone.Buffers(sampleUrls, () => console.log('buffers loaded'))
 Tone.context.lookAhead = 0;
 let synth, polySynth;
 let lastPlay = 0;
@@ -19,7 +19,6 @@ export const startSound = ({onLoaded= ()=>false}) => {
         urls: samples.noteMapping,
         baseUrl: samples.baseUrl,
         onload: () => {
-            console.log('sounds loaded')
             polySynth = new Tone.PolySynth().toDestination();
             onLoaded();
         }
