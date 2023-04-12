@@ -5,12 +5,15 @@ export const useStyles = createUseStyles({
         display: 'flex',
         flexDirection: 'column',
     },
-    gameControls: {
+    controlsArea:{
+        maxWidth: '80vw'
+    },
+    manualScoring: {
         height: 80,
         display: 'flex',
-        width: 300,
-        justifyContent: 'space-around',
-        margin: 'auto',
+        width: '100%',
+        marginTop: 25,
+        justifyContent: 'space-evenly',
     },
     repeatButton: {
         height: 30,
@@ -25,6 +28,7 @@ export const useStyles = createUseStyles({
         maxWidth: 600,
         height: '45vw',
         maxHeight: 300,
+        // margin: '0 auto',
     },
     scoreArea: {
         display: 'flex',

@@ -8,8 +8,8 @@ import {playScale} from "../../../../services/midi.js";
 function ControlsArea({manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame}) {
     const classes = useStyles();
     return (
-        <div>
-            <div className={classes.gameControls}>
+        <div className={classes.controlsArea}>
+            <div className={classes.manualScoring}>
                 {manualScore && <ManualScore {...{checkAnswer}} />}
             </div>
             <div>
