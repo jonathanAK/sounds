@@ -5,16 +5,16 @@ const key = {
     listStyle: 'none',
     position: 'relative',
     float: 'left',
-    margin: '0 0 0 calc(-100%/30)',
+    border: '1px solid #bbb',
+    margin: '0 0 0 calc(-100%/28)',
+    boxSizing: 'border-box',
 };
 
 const white = {
     ...key,
     height: '100%',
-    width: 'calc(100%/8)',
+    width: 'calc(100%/7)',
     zIndex: 1,
-    borderLeft: '1px solid #bbb',
-    borderBottom: '1px solid #bbb',
     borderRadius: '0 0 5px 5px',
     boxShadow: '-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2)',
     background: 'linear-gradient(to bottom,#eee 0%,#fff 100%)',
@@ -30,9 +30,8 @@ const white = {
 const black = {
     ...key,
     height: '50%',
-    width: 'calc(100%/16)',
+    width: 'calc(100%/14)',
     zIndex: 2,
-    border: '1px solid #000',
     borderRadius: '0 0 3px 3px',
     boxShadow: '-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5)',
     background: 'linear-gradient(45deg,#222 0%,#555 100%)',
@@ -51,12 +50,15 @@ export const useStyles = createUseStyles({
         border: '1px solid #160801',
         borderRadius: '1em',
         background: 'linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png)',
-        boxShadow: '0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)'
+        boxShadow: '0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)',
+        '@media (max-width: 500px)': {
+            padding: 15,
+        }
     },
     c: {
         ...white,
         borderRadius: '5px 0 5px 5px',
-        margin: '0 0 0 calc(100%/50)',
+        margin: 0,
     },
     cs: {
         ...black,
@@ -72,8 +74,7 @@ export const useStyles = createUseStyles({
     },
     f: {
         ...white,
-        margin:0,
-        marginLeft: '0.22%',
+        marginLeft:-1,
     },
     fs: {
         ...black,
