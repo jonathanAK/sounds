@@ -1,26 +1,22 @@
-const notes = [
-    ['C', 'B#'],
-    ['C#', 'Db'],
-    ['D'],
-    ['D#', 'Eb'],
-    ['E', 'Fb'],
-    ['F', 'E#'],
-    ['F#', 'Gb'],
-    ['G'],
-    ['G#', 'Ab'],
-    ['A'],
-    ['A#','Bb'],
-    ['B','Cb']
-];
+import notes from "./noteOrder.json";
 
 let midi;
 
-const onMIDIFailure = () => console.warn("Not finding a MIDI controller");
-const onMIDImessage = (messageData) => {
+const onMIDImessage = (onKeydown) => (messageData) => {
     if (messageData.data[0] !== 144) return;
-    const note = notes[(messageData.data[1] - 24) % 12];
-    console.log('key pressed', note);
+    const note = notes[(messageData.data[1] - 12) % 12];
+    onKeydown(note);
 };
+
+const onMIDISuccess = (midiData) => {
+    console.log('MIDI Success', midiData);
+    const allInputs = midiData.inputs.values();
+    for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
+        input.value.onmidimessage = onMIDImessage(console.log);
+    }
+};
+const onMIDIFailure = () => console.warn("Not finding a MIDI controller");
+
 
 if (navigator.requestMIDIAccess) {
     navigator.requestMIDIAccess({
@@ -29,13 +25,3 @@ if (navigator.requestMIDIAccess) {
 } else {
     console.warn("No MIDI support in your browser");
 }
-
-function onMIDISuccess(midiData) {
-    console.log('onMIDISuccess', midiData);
-    midi = midiData;
-    var allInputs = midi.inputs.values();
-    for (var input = allInputs.next(); input && !input.done; input = allInputs.next()) {
-        input.value.onmidimessage = onMIDImessage;
-    }
-}
-
