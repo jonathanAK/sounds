@@ -1,9 +1,10 @@
 import Button from '@mui/material/Button';
 import {FormControl, InputLabel, MenuItem, Select, Switch} from "@mui/material";
 import scales from '../../../../services/scales.json';
-import {useEffect} from "react";
+import {useEffect, useRef} from "react";
 import {useStyles} from "../../singleNote.css.js";
 import NoteSwitch from "./noteSwitch.jsx";
+import {saveSettings} from "../../../../services/localHost.js";
 
 function SingleNoteSettings({
                                 startNewGame,
@@ -17,9 +18,24 @@ function SingleNoteSettings({
                                 setNoRepeat,
                                 soundsLoaded
                             }) {
+    const initialRender = useRef(true);
+
     useEffect(() => {
-        setPlayableDegrees([1, 3, 5])
+        if (initialRender.current) {
+            initialRender.current= false;
+        } else {
+            setPlayableDegrees([1, 3, 5]);
+        }
     }, [scale]);
+
+    useEffect(()=>{
+        saveSettings({singleNote:{
+                scale,
+                octave,
+                noRepeat,
+                playableDegrees
+        }})
+    },[scale, octave, noRepeat, playableDegrees])
     const classes = useStyles();
     return (
         <div>
