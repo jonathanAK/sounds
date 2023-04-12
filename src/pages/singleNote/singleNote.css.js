@@ -54,6 +54,6 @@ export const useStyles = createUseStyles({
     },
     repeatText:{
         margin:0,
-    }
+    },
 })
 

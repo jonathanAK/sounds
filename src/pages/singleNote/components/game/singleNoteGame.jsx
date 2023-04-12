@@ -10,7 +10,7 @@ import ControlsArea from "./controlsArea.jsx";
 let delayedNoteTimeOut;
 let score = {};
 let started = 0;
-const specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+let specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
 
 function SingleNoteGame({
                             scale,
@@ -82,11 +82,15 @@ function SingleNoteGame({
         setShowSettings(true);
         setFinished(false);
     }
+    const startPlay = ()=>{
+        setTimeout(newNote, 4500);
+        started = Date.now();
+        specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+    };
 
     useEffect(() => {
         playScale({key: scale, octave});
-        setTimeout(newNote, 4500);
-        started = Date.now()-4500;
+        setTimeout(startPlay, 4500);
     }, []);
 
     return (
