@@ -1,4 +1,4 @@
-import {playNoteOnScale} from '../../../../services/midi';
+import {playNoteOnScale, playScale} from '../../../../services/midi';
 import {useEffect, useState} from "react";
 import Piano from "../../../../components/piano.jsx";
 import scales from "../../../../services/scales.json";
@@ -81,8 +81,9 @@ function SingleNoteGame({
     }
 
     useEffect(() => {
-        setTimeout(newNote, 1500);
-        started = Date.now()-1500;
+        playScale({key: scale, octave});
+        setTimeout(newNote, 4500);
+        started = Date.now()-4500;
     }, []);
 
     return (

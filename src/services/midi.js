@@ -13,7 +13,7 @@ let lastPlay = 0;
 
 const minMaxNum = (min, max, num) => Math.max(min, Math.min(max, Math.floor(num)));
 
-export const startSound = ({key = 'C', octave = 4}) => {
+export const startSound = ({onLoaded= ()=>false}) => {
     Tone.start();
     synth = new Tone.Sampler({
         urls: samples.noteMapping,
@@ -21,7 +21,7 @@ export const startSound = ({key = 'C', octave = 4}) => {
         onload: () => {
             console.log('sounds loaded')
             polySynth = new Tone.PolySynth().toDestination();
-            playScale({key, octave});
+            onLoaded();
         }
     }).toDestination();
 }
