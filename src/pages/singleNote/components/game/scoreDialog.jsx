@@ -11,8 +11,9 @@ const ScoreDialog = ({open, onClose, correct, time, asked, difficulty, scale, sp
     const correctTime = Math.round(time / correct);
     const score = Math.round(correctRate * difficulty / correctTime);
     const percentByNote = {};
-    specificGrade.map(([correct, wrong], keyNum) => {
-        percentByNote[scales[scale][keyNum]] = (correct / (wrong + correct)) || 1;
+    specificGrade.map(([all, correct], keyNum) => {
+        const note = scales[scale][keyNum];
+        percentByNote[note] = (correct / all) || 1;
     });
     return (
         <Dialog onClose={onClose} open={open}>

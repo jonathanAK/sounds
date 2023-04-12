@@ -8,18 +8,17 @@ const sampleUrls = Object.keys(samples.noteMapping).reduce((obj, key) => ({
 }), {})
 new Tone.Buffers(sampleUrls, () => console.log('buffers loaded'))
 Tone.context.lookAhead = 0;
-let synth, polySynth;
+let synth;
 let lastPlay = 0;
 
 const minMaxNum = (min, max, num) => Math.max(min, Math.min(max, Math.floor(num)));
 
-export const startSound = ({onLoaded= ()=>false}) => {
+export const startSound = async ({onLoaded= ()=>false}) => {
+    await Tone.start();
     synth = new Tone.Sampler({
         urls: samples.noteMapping,
         baseUrl: samples.baseUrl,
-        onload: async () => {
-            await Tone.start();
-            polySynth = new Tone.PolySynth().toDestination();
+        onload: () => {
             onLoaded();
         }
     }).toDestination();

@@ -83,7 +83,7 @@ function SingleNoteGame({
         setFinished(false);
     }
     const startPlay = ()=>{
-        setTimeout(newNote, 4500);
+        newNote();
         started = Date.now();
         specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
     };
