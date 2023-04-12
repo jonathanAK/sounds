@@ -10,6 +10,7 @@ import ControlsArea from "./controlsArea.jsx";
 let delayedNoteTimeOut;
 let score = {};
 let started = 0;
+const specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
 
 function SingleNoteGame({
                             scale,
@@ -49,11 +50,13 @@ function SingleNoteGame({
     };
     const checkAnswer = (noteNames, manual) => {
         increaseQuestionCount();
+        specificGrade[degree-1][0] += 1;
         const correct = !noteNames ? manual : noteNames.includes(scales[scale][degree - 1]);
         playNextNote();
         setTimeout(() => setMessage(''), 1500);
         if (correct) {
             increaseCorrectCount();
+            specificGrade[degree-1][1] += 1;
         }
         if (!noteNames) return setMessage('');
         if (correct) {
@@ -72,7 +75,7 @@ function SingleNoteGame({
         setFinished(true);
         const time = (Date.now() - started)/1000;
         const difficulty = (1.5^(playableDegrees.length -1)) -1;
-        score = {correct, asked, time, difficulty};
+        score = {correct, asked, time, difficulty, specificGrade, scale};
     };
 
     const onCloseScore = () =>{
