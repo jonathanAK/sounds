@@ -1,10 +1,12 @@
 import {startSound} from "../../services/midi.js";
 import {Button} from "@mui/material";
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import {initMidi} from "../../services/midiController.js";
 
 
 function StartPage({setCurrentPage, setSoundsLoaded}) {
     const startSingleNote =()=>{
+        initMidi();
         startSound({onLoaded:()=>setSoundsLoaded(true)});
         setCurrentPage('singleNote');
     };

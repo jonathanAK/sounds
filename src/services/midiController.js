@@ -8,20 +8,26 @@ const onMIDImessage = (onKeydown) => (messageData) => {
     onKeydown(note);
 };
 
-const onMIDISuccess = (midiData) => {
-    console.log('MIDI Success', midiData);
-    const allInputs = midiData.inputs.values();
+const registerToMidi = (onKeyDown) =>{
+    if(!midi.inputs.size) return console.warn("Not finding a MIDI controller");
+    const allInputs = midi.inputs.values();
     for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
-        input.value.onmidimessage = onMIDImessage(console.log);
+        input.value.onmidimessage = onMIDImessage(onKeyDown);
+    }
+}
+
+const onMIDISuccess = (midiData) => {
+    if(!midiData.inputs.size) return console.warn("Not finding a MIDI controller");
+    midi = midiData;
+    console.log('MIDI Success', midiData);
+    registerToMidi(console.log); //TODO: move to game start
+};
+
+export const initMidi = async () => {
+    try{
+        const midiData = await navigator.requestMIDIAccess({sysex: false});
+        onMIDISuccess(midiData);
+    }catch (e) {
+        console.warn("Not finding a MIDI controller");
     }
 };
-const onMIDIFailure = () => console.warn("Not finding a MIDI controller");
-
-
-if (navigator.requestMIDIAccess) {
-    navigator.requestMIDIAccess({
-        sysex: false
-    }).then(onMIDISuccess, onMIDIFailure);
-} else {
-    console.warn("No MIDI support in your browser");
-}
