@@ -2,6 +2,7 @@ import './App.css';
 import SingleNote from "./pages/singleNote/singleNote.jsx";
 import Start from "./pages/start/start.jsx";
 import {useEffect, useState} from "react";
+import './services/midiController.js';
 
 const pages = {
     start: Start,
