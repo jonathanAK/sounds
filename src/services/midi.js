@@ -14,11 +14,11 @@ let lastPlay = 0;
 const minMaxNum = (min, max, num) => Math.max(min, Math.min(max, Math.floor(num)));
 
 export const startSound = ({onLoaded= ()=>false}) => {
-    Tone.start();
     synth = new Tone.Sampler({
         urls: samples.noteMapping,
         baseUrl: samples.baseUrl,
-        onload: () => {
+        onload: async () => {
+            await Tone.start();
             polySynth = new Tone.PolySynth().toDestination();
             onLoaded();
         }
@@ -38,7 +38,7 @@ export const makeSound = ({note = 'C', octave = 4}) => {
         const startTime = Tone.now();
         if (!startTime > lastPlay) return;
         lastPlay = startTime;
-        synth.triggerAttackRelease(note + octave, "8n");
+        synth.triggerAttackRelease(note + octave, "4n");
     } catch (e) {
         console.error(e);
     }
