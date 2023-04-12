@@ -1,6 +1,10 @@
 import {createUseStyles} from 'react-jss';
 
 export const useStyles = createUseStyles({
+    singleNoteGame:{
+        display: 'flex',
+        flexDirection: 'column',
+    },
     gameControls: {
         height: 80,
         display: 'flex',

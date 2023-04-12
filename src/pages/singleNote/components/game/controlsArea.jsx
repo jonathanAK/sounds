@@ -7,7 +7,7 @@ import repeatIcon from "../../../../assets/repeat.png";
 function ControlsArea({manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame}) {
     const classes = useStyles();
     return (
-        <>
+        <div>
             <div className={classes.gameControls}>
                 {manualScore && <ManualScore {...{checkAnswer}} />}
             </div>
@@ -18,7 +18,7 @@ function ControlsArea({manualScore, setManualScore, checkAnswer, repeat, mutePia
                         onChange={() => setManualScore(!manualScore)}
                     />
             </span>
-            <Button onClick={repeat}><img src={repeatIcon} className={classes.repeatButton}/></Button>
+            <Button onClick={repeat}><img src={repeatIcon} className={classes.repeatButton} alt="play Again"/></Button>
             <span>
                 Mute Piano
                     <Switch
@@ -27,7 +27,7 @@ function ControlsArea({manualScore, setManualScore, checkAnswer, repeat, mutePia
                     />
             </span>
             <Button onClick={finishGame} variant="outlined">End Game</Button>
-        </>
+        </div>
     )
 }
 

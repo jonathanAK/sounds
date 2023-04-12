@@ -86,7 +86,7 @@ function SingleNoteGame({
     }, []);
 
     return (
-        <div>
+        <div className={classes.singleNoteGame}>
             <ControlsArea {...{manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame }}/>
             <div className={classes.message}><h2>{message}</h2></div>
             <div className={classes.piano}>

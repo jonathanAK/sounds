@@ -43,6 +43,7 @@ const black = {
 }
 export const useStyles = createUseStyles({
     box: {
+        boxSizing: 'border-box',
         backgroundColor: '#FF9999',
         width: '100%',
         height: '100%',
