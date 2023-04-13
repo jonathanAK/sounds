@@ -18,6 +18,7 @@ export const registerToMidi = (onKeyDown) =>{
 }
 
 export const unregisterToMidi = () =>{
+    if(!midi) return;
     const allInputs = midi.inputs.values();
     for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
         delete input.value.onmidimessage;
