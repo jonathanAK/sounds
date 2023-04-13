@@ -90,13 +90,15 @@ function SingleNoteGame({
     };
 
     useEffect(() => {
-        playScale({key: scale, octave});
-        setTimeout(startPlay, 4500);
         registerToMidi(pianoPressed);
-
         return () => {
             unregisterToMidi();
         }
+    }, [degree]);
+
+    useEffect(() => {
+        playScale({key: scale, octave});
+        setTimeout(startPlay, 4500);
     }, []);
 
     return (
