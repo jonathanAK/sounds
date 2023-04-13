@@ -9,7 +9,7 @@ const onMIDImessage = (onKeydown) => (messageData) => {
 };
 
 export const registerToMidi = (onKeyDown) =>{
-    if(!onKeyDown) return;
+    if(!midi || !onKeyDown) return;
     if(!midi.inputs.size) return console.warn("Not finding a MIDI controller");
     const allInputs = midi.inputs.values();
     for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
