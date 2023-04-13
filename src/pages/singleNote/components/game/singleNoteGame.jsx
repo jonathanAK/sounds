@@ -6,6 +6,7 @@ import {useStyles} from "../../singleNote.css.js";
 import ScoreDialog from "./scoreDialog.jsx";
 import ScoreArea from "./scoreArea";
 import ControlsArea from "./controlsArea.jsx";
+import {registerToMidi, unregisterToMidi} from "../../../../services/midiController.js";
 
 let delayedNoteTimeOut;
 let score = {};
@@ -91,6 +92,11 @@ function SingleNoteGame({
     useEffect(() => {
         playScale({key: scale, octave});
         setTimeout(startPlay, 4500);
+        registerToMidi(pianoPressed);
+
+        return () => {
+            unregisterToMidi();
+        }
     }, []);
 
     return (

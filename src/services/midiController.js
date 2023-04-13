@@ -8,7 +8,8 @@ const onMIDImessage = (onKeydown) => (messageData) => {
     onKeydown(note);
 };
 
-const registerToMidi = (onKeyDown) =>{
+export const registerToMidi = (onKeyDown) =>{
+    if(!onKeyDown) return;
     if(!midi.inputs.size) return console.warn("Not finding a MIDI controller");
     const allInputs = midi.inputs.values();
     for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
@@ -16,11 +17,19 @@ const registerToMidi = (onKeyDown) =>{
     }
 }
 
+export const unregisterToMidi = () =>{
+    const allInputs = midi.inputs.values();
+    for (let input = allInputs.next(); input && !input.done; input = allInputs.next()) {
+        delete input.value.onmidimessage;
+    }
+}
+
+
 const onMIDISuccess = (midiData) => {
+    console.log(midiData);
     if(!midiData.inputs.size) return console.warn("Not finding a MIDI controller");
     midi = midiData;
     console.log('MIDI Success', midiData);
-    registerToMidi(console.log); //TODO: move to game start
 };
 
 export const initMidi = async () => {
