@@ -3,8 +3,10 @@ import notes from "./noteOrder.json";
 let midi;
 
 const onMIDImessage = (onKeydown) => (messageData) => {
-    if (messageData.data[0] !== 144) return;
-    const note = notes[(messageData.data[1] - 12) % 12];
+    const data = messageData.data;
+    if (data[0] === 176 && data[2] ===127) return onKeydown('pedal');
+    if (data[0] !== 144) return;
+    const note = notes[(data[1] - 12) % 12];
     onKeydown(note);
 };
 

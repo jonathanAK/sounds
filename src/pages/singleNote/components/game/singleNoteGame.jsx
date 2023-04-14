@@ -69,6 +69,7 @@ function SingleNoteGame({
 
     const pianoPressed = (noteNames) => {
         if (manualScore) return;
+        if(noteNames === 'pedal') return repeat();
         checkAnswer(noteNames);
     }
 
