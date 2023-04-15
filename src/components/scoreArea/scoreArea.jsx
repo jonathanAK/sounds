@@ -1,4 +1,4 @@
-import {useStyles} from "../../singleNote.css.js";
+import {useStyles} from "./scoreArea.css.js";
 
 function ScoreArea({correct, asked}) {
     const classes = useStyles();

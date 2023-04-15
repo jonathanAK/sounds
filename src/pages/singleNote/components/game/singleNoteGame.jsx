@@ -4,7 +4,7 @@ import Piano from "../../../../components/piano.jsx";
 import scales from "../../../../services/scales.json";
 import {useStyles} from "../../singleNote.css.js";
 import ScoreDialog from "./scoreDialog.jsx";
-import ScoreArea from "./scoreArea";
+import ScoreArea from "../../../../components/scoreArea/scoreArea.jsx";
 import ControlsArea from "./controlsArea.jsx";
 import {registerToMidi, unregisterToMidi} from "../../../../services/midiController.js";
 
@@ -40,9 +40,7 @@ function SingleNoteGame({
         playNoteOnScale({scale, degree: newDegree, octave: newOctave});
     };
 
-    const repeat = () => {
-        playNoteOnScale({scale, degree, octave})
-    };
+    const repeat = () => playNoteOnScale({scale, degree, octave});
 
     const playNextNote = () => {
         const delay = mutePiano ? 0 : 1000;
@@ -83,7 +81,8 @@ function SingleNoteGame({
     const onCloseScore = () =>{
         setShowSettings(true);
         setFinished(false);
-    }
+    };
+
     const startPlay = ()=>{
         newNote();
         started = Date.now();

@@ -93,7 +93,7 @@ function SingleNoteGame({
             <ControlsArea {...{manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame }}/>
             <div className={classes.message}><h2>{message}</h2></div>
             <div className={classes.answerArea}>
-                
+
             </div>
             <ScoreArea {...{correct, asked}}/>
             <ScoreDialog {...score} open={finished} onClose={onCloseScore}/>
