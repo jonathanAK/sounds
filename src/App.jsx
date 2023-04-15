@@ -3,10 +3,12 @@ import SingleNote from "./pages/singleNote/singleNote.jsx";
 import Start from "./pages/start/start.jsx";
 import {useEffect, useState} from "react";
 import './services/midiController.js';
+import ResolvingNotes from "./pages/resolving/resolvingNotes.jsx";
 
 const pages = {
     start: Start,
-    singleNote: SingleNote
+    singleNote: SingleNote,
+    resolvingNotes: ResolvingNotes,
 }
 
 function App() {

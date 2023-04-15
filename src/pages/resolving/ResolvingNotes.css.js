@@ -49,7 +49,14 @@ export const useStyles = createUseStyles({
         margin:0,
     },
     answerArea:{
-
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        width: '90vw',
+        maxWidth: 350,
+    },
+    button:{
+        width: '100%',
+        aspectRatio: '1 / 1',
     }
 })
 

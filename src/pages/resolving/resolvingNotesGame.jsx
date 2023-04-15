@@ -2,45 +2,41 @@ import {playNoteOnScale, playScale} from '../../services/midi';
 import {useEffect, useState} from "react";
 import scales from "../../services/scales.json";
 import {useStyles} from "./ResolvingNotes.css.js";
+import ScoreArea from "../../components/scoreArea/scoreArea.jsx";
 
-import ScoreDialog from "./scoreDialog.jsx";
-import ScoreArea from "./scoreArea";
-import ControlsArea from "./controlsArea.jsx";
+// import ScoreDialog from "./scoreDialog.jsx";
+// import ControlsArea from "./controlsArea.jsx";
+import Button from "@mui/material/Button";
+import {KeyboardArrowDown, KeyboardArrowUp} from "@mui/icons-material";
 
 let delayedNoteTimeOut;
 let score = {};
 let started = 0;
 let specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
 
-function SingleNoteGame({
-                            scale,
-                            noRepeat,
-                            selectedOctave = 4,
-                            increaseQuestionCount,
-                            increaseCorrectCount,
+const degreesResolve = ['b','d','s','d','s','d','u','b'];
+
+function ResolvingNotesGame({
+                            scale,noRepeat,selectedOctave = 4,
+                            increaseQuestionCount, increaseCorrectCount, setShowSettings,
                             asked, correct,
-                            setShowSettings
                         }) {
     const [degree, setDegree] = useState(-1);
     const [message, setMessage] = useState('');
     const [octave, setOctave] = useState(selectedOctave);
-    const [manualScore, setManualScore] = useState(false);
-    const [mutePiano, setMutePiano] = useState(false);
     const [finished, setFinished] = useState(false);
     const classes = useStyles();
 
     const newNote = () => {
-        const newDegree = playableDegrees[Math.floor(Math.random() * 8)];
+        const newDegree = Math.floor(Math.random() * 8);
         const newOctave = selectedOctave < 0 ? Math.floor((Math.random() * 4) + 3) : selectedOctave;
         if (noRepeat && degree === newDegree && octave === newOctave) return newNote();
+        playNoteOnScale({scale, degree: newDegree, octave: newOctave});
         setDegree(newDegree);
         setOctave(newOctave);
-        playNoteOnScale({scale, degree: newDegree, octave: newOctave});
     };
 
-    const repeat = () => {
-        playNoteOnScale({scale, degree, octave});
-    };
+    const repeat = () => playNoteOnScale({scale, degree, octave});
 
     const playNextNote = () => {
         clearTimeout(delayedNoteTimeOut);
@@ -50,19 +46,15 @@ function SingleNoteGame({
     const checkAnswer = (answer) => {
         increaseQuestionCount();
         specificGrade[degree-1][0] += 1;
-        const correct = !noteNames ? manual : noteNames.includes(scales[scale][degree - 1]);
+        const correct = degreesResolve[degree] === answer;
         playNextNote();
         setTimeout(() => setMessage(''), 1500);
         if (correct) {
             increaseCorrectCount();
             specificGrade[degree-1][1] += 1;
+            return setMessage('correct');
         }
-        if (!noteNames) return setMessage('');
-        if (correct) {
-            setMessage('correct');
-            return;
-        }
-        setMessage(`wrong played: ${scales[scale][degree - 1]} you pressed: ${noteNames[0]}`);
+        setMessage(`wrong played: ${scales[scale][degree - 1]}`);
     };
 
     const finishGame = () => {
@@ -90,15 +82,18 @@ function SingleNoteGame({
 
     return (
         <div className={classes.resolvingNotesGame}>
-            <ControlsArea {...{manualScore, setManualScore, checkAnswer, repeat, mutePiano, setMutePiano, finishGame }}/>
+            {/*<ControlsArea {...{checkAnswer, repeat, finishGame }}/>*/}
             <div className={classes.message}><h2>{message}</h2></div>
             <div className={classes.answerArea}>
-
+                <Button className={classes.button} sx={{backgroundColor:'green'}} onClick={()=>checkAnswer('b')}>Base</Button>
+                <Button className={classes.button} sx={{backgroundColor:'blue'}} onClick={()=>checkAnswer('s')}>Stable</Button>
+                <Button className={classes.button} sx={{backgroundColor:'purple'}} onClick={()=>checkAnswer('d')}><KeyboardArrowDown sx={{color:'white'}}/></Button>
+                <Button className={classes.button} sx={{backgroundColor:'gold'}} onClick={()=>checkAnswer('u')}><KeyboardArrowDown/></Button>
             </div>
             <ScoreArea {...{correct, asked}}/>
-            <ScoreDialog {...score} open={finished} onClose={onCloseScore}/>
+            {/*<ScoreDialog {...score} open={finished} onClose={onCloseScore}/>*/}
         </div>
     )
 }
 
-export default SingleNoteGame;
+export default ResolvingNotesGame;

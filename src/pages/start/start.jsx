@@ -1,14 +1,19 @@
 import {startSound} from "../../services/midi.js";
 import {Button} from "@mui/material";
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import {initMidi} from "../../services/midiController.js";
 
 
 function StartPage({setCurrentPage, setSoundsLoaded}) {
-    const startSingleNote =()=>{
+    const initSounds = ()=>{
         initMidi();
         startSound({onLoaded:()=>setSoundsLoaded(true)});
-        setCurrentPage('singleNote');
+    };
+
+    const startGame =(game)=>{
+        initSounds();
+        setCurrentPage(game);
     };
 
     return <div>
@@ -17,10 +22,14 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
         Select Game To Start
         <br/>
         <br/>
-        <br/>
-        <Button onClick={startSingleNote} variant={"outlined"}>
+        <Button onClick={()=>startGame('singleNote')} variant={"outlined"}>
             <MusicNoteIcon/>
             single Note
+        </Button>
+        <br/><br/>
+        <Button onClick={()=>startGame('resolvingNotes')} variant={"outlined"}>
+            <TrendingUpIcon/>
+            Resolving Notes
         </Button>
     </div>
 }

@@ -30,13 +30,6 @@ export const useStyles = createUseStyles({
         maxHeight: 300,
         // margin: '0 auto',
     },
-    scoreArea: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100%',
-    },
-    scoreCorrect: {color: 'green'},
-    scoreWrong: {color: 'red'},
     selectFromControl: {
         margin: 1,
         minWidth: 60,

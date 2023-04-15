@@ -7,11 +7,10 @@ function ResolvingNotes({setCurrentPage, soundsLoaded}) {
     const settings = window.globals.settings.resolvingNotes || {};
     const [showSettings, setShowSettings] = useState(true);
     const [scale, setScale] = useState(settings.scale || 'C');
-    const [correct, setCorrect] =useState(0);
+    const [correct, setCorrect] = useState(0);
     const [asked, setAsked] = useState(0);
     const [octave, setOctave] = useState(settings.octave || 4);
     const [noRepeat, setNoRepeat] = useState(settings.noRepeat || false);
-
 
     const increaseQuestionCount = ()=> setAsked(asked+1);
     const increaseCorrectCount = ()=> setCorrect(correct+1);
