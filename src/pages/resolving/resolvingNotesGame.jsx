@@ -72,7 +72,7 @@ function ResolvingNotesGame({
     const startPlay = ()=>{
         newNote();
         started = Date.now();
-        specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+        specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
     };
 
     useEffect(() => {
