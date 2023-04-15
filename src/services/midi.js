@@ -11,8 +11,6 @@ Tone.context.lookAhead = 0;
 let synth;
 let lastPlay = 0;
 
-const minMaxNum = (min, max, num) => Math.max(min, Math.min(max, Math.floor(num)));
-
 export const startSound = async ({onLoaded= ()=>false}) => {
     await Tone.start();
     synth = new Tone.Sampler({
@@ -57,7 +55,9 @@ export const playScale = ({key, octave = 4}) => {
 }
 
 export const playNoteOnScale = ({scale = 'C', degree = 0, octave = 4}) => {
-    const note = scales[scale][minMaxNum(0, 6, degree - 1)];
+    const adjDegree = (degree - 1) % 7;
+    const adjOctave = octave + Math.floor((degree - 1) / 7);
+    const note = scales[scale][adjDegree];
     if (!note) return;
-    makeSound({note, octave});
+    makeSound({note, adjOctave});
 }
