@@ -1,5 +1,8 @@
-export const saveSettings = ({singleNote}) => {
-    localStorage.setItem("settings", JSON.stringify({singleNote}));
+export const saveSettings = ({singleNote, resolvingNotes}) => {
+    const settings = JSON.parse(localStorage.getItem("settings") || '{}');
+    if(singleNote) settings.singleNote = singleNote;
+    if(resolvingNotes) settings.resolvingNotes = resolvingNotes;
+    localStorage.setItem("settings", JSON.stringify(settings));
 };
 
 export const loadSettings = () => {
