@@ -12,7 +12,7 @@ import {KeyboardArrowDown, KeyboardArrowUp} from "@mui/icons-material";
 let delayedNoteTimeOut;
 let score = {};
 let started = 0;
-let specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
+let specificGrade = [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]];
 
 const degreesResolve = ['b','d','s','d','s','d','u','b'];
 
@@ -28,7 +28,7 @@ function ResolvingNotesGame({
     const classes = useStyles();
 
     const newNote = () => {
-        const newDegree = Math.floor(Math.random() * 8);
+        const newDegree = Math.floor(Math.random() * 8)+1;
         const newOctave = selectedOctave < 0 ? Math.floor((Math.random() * 4) + 3) : selectedOctave;
         if (noRepeat && degree === newDegree && octave === newOctave) return newNote();
         playNoteOnScale({scale, degree: newDegree, octave: newOctave});
@@ -46,7 +46,7 @@ function ResolvingNotesGame({
     const checkAnswer = (answer) => {
         increaseQuestionCount();
         specificGrade[degree-1][0] += 1;
-        const correct = degreesResolve[degree] === answer;
+        const correct = degreesResolve[degree-1] === answer;
         playNextNote();
         setTimeout(() => setMessage(''), 1500);
         if (correct) {
@@ -85,10 +85,10 @@ function ResolvingNotesGame({
             {/*<ControlsArea {...{checkAnswer, repeat, finishGame }}/>*/}
             <div className={classes.message}><h2>{message}</h2></div>
             <div className={classes.answerArea}>
-                <Button className={classes.button} sx={{backgroundColor:'green'}} onClick={()=>checkAnswer('b')}>Base</Button>
-                <Button className={classes.button} sx={{backgroundColor:'blue'}} onClick={()=>checkAnswer('s')}>Stable</Button>
-                <Button className={classes.button} sx={{backgroundColor:'purple'}} onClick={()=>checkAnswer('d')}><KeyboardArrowDown sx={{color:'white'}}/></Button>
-                <Button className={classes.button} sx={{backgroundColor:'gold'}} onClick={()=>checkAnswer('u')}><KeyboardArrowDown/></Button>
+                <Button className={classes.button} sx={{backgroundColor:'green', color:'white', fontSize: '2em'}} onClick={()=>checkAnswer('b')}>Base</Button>
+                <Button className={classes.button} sx={{backgroundColor:'blue', color:'white', fontSize: '2em'}} onClick={()=>checkAnswer('s')}>Stable</Button>
+                <Button className={classes.button} sx={{backgroundColor:'purple'}} onClick={()=>checkAnswer('d')}><KeyboardArrowDown sx={{color:'white', fontSize: '10em'}}/></Button>
+                <Button className={classes.button} sx={{backgroundColor:'gold'}} onClick={()=>checkAnswer('u')}><KeyboardArrowUp sx={{color:'white', fontSize: '10em'}}/></Button>
             </div>
             <ScoreArea {...{correct, asked}}/>
             {/*<ScoreDialog {...score} open={finished} onClose={onCloseScore}/>*/}

@@ -53,6 +53,7 @@ export const useStyles = createUseStyles({
         gridTemplateColumns: '1fr 1fr',
         width: '90vw',
         maxWidth: 350,
+        gridGap: 10,
     },
     button:{
         width: '100%',
