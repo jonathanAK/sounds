@@ -59,5 +59,5 @@ export const playNoteOnScale = ({scale = 'C', degree = 0, octave = 4}) => {
     const adjOctave = octave + Math.floor((degree - 1) / 7);
     const note = scales[scale][adjDegree];
     if (!note) return;
-    makeSound({note, adjOctave});
+    makeSound({note, octave: adjOctave});
 }

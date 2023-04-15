@@ -1,6 +1,6 @@
 import {useStyles} from "./piano.css.js";
 import {makeSound} from "../services/midi.js";
-const Piano = ({octave=4,callback,mute=false}) => {
+const Piano = ({octave= 4,callback,mute=false}) => {
     const classes = useStyles();
     const onclick = (note)=>{
         if(!mute){
