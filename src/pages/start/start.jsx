@@ -40,10 +40,12 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
             <h4>*The instrument samples in this app come from a variety of
                 <a href={'./public/samples.txt'} target="_blank"> sources.</a>
             </h4>
-            <h4>Licenses:</h4>
-            <a href={'https://creativecommons.org/licenses/by/3.0/'} target="_blank">CC-by 3.0</a>
-            <br/>
-            <a href={'https://creativecommons.org/licenses/by-nc-sa/4.0/'} target="_blank">CC BY-NC-SA 4.0</a>
+            <h4>sample licenses:
+                <br/>
+                <a href={'https://creativecommons.org/licenses/by/3.0/'} target="_blank">CC-by 3.0</a>
+                <br/>
+                <a href={'https://creativecommons.org/licenses/by-nc-sa/4.0/'} target="_blank">CC BY-NC-SA 4.0</a>
+            </h4>
         </div>
     </div>
 }
