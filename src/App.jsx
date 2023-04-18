@@ -13,11 +13,12 @@ const pages = {
 
 function App() {
     const [soundsLoaded, setSoundsLoaded] = useState(false);
+    const [keyBoardConnected, setKeyBoardConnected] = useState(false);
     const [currentPage, setCurrentPage] = useState('start');
     const Page = pages[currentPage];
 
     useEffect(()=>console.log('sounds loaded: ',soundsLoaded),[soundsLoaded]);
-
+    useEffect(()=>{},[]);
   return (
     <div className="App">
         <Page {...{soundsLoaded, setCurrentPage, setSoundsLoaded}}/>

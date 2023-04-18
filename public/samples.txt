@@ -1,0 +1,22 @@
+piano       Yotam Mann - CC BY-NC-SA 4.0 - https://tonejs.github.io/audio/casio/
+bass        Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+bassoon     Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+cello       Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+contrabass  Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+flute       Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+french horn Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+guitar ac   Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+guitar el   Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+guitar ny   Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+harmonium   Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+harp        Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+organ       Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+sax         Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+trombone    Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+trumpet     Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+tuba        Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+violin      Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+xylophone   Nicholaus P. Brosowsky - CC-by 3.0 - https://github.com/nbrosowsky/tonejs-instruments
+
+CC-by 3.0        -  https://creativecommons.org/licenses/by/3.0/
+CC BY-NC-SA 4.0  -   https://creativecommons.org/licenses/by-nc-sa/4.0/
