@@ -35,6 +35,13 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
                 Resolving Notes
             </div>
         </Button>
+        <br/><br/>
+        <Button onClick={() => startGame('rhythmicPatterns')} variant={"outlined"}>
+            <div className={classes.gameButton}>
+                <TrendingUpIcon/>
+                Rhythmic Patterns
+            </div>
+        </Button>
 
         <div className={classes.attribute}>
             <h4>*The instrument samples in this app come from a variety of

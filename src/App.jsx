@@ -4,11 +4,13 @@ import Start from "./pages/start/start.jsx";
 import {useEffect, useState} from "react";
 import './services/midiController.js';
 import ResolvingNotes from "./pages/resolving/resolvingNotes.jsx";
+import RhythmicPatterns from "./pages/rhythmicPatterns/rhythmicPatterns.jsx";
 
 const pages = {
     start: Start,
     singleNote: SingleNote,
     resolvingNotes: ResolvingNotes,
+    rhythmicPatterns:RhythmicPatterns,
 }
 
 function App() {

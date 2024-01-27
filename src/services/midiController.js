@@ -40,6 +40,7 @@ export const initMidi = async () => {
         const midiData = await navigator.requestMIDIAccess({sysex: false});
         onMIDISuccess(midiData);
     }catch (e) {
+
         console.warn("Not finding a MIDI controller");
     }
 };
