@@ -42,6 +42,13 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
                 Rhythmic Patterns
             </div>
         </Button>
+        <br/><br/>
+        <Button onClick={() => startGame('eq')} variant={"outlined"}>
+            <div className={classes.gameButton}>
+                <TrendingUpIcon/>
+                EQ Recognition
+            </div>
+        </Button>
 
         <div className={classes.attribute}>
             <h4>*The instrument samples in this app come from a variety of

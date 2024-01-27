@@ -5,12 +5,14 @@ import {useEffect, useState} from "react";
 import './services/midiController.js';
 import ResolvingNotes from "./pages/resolving/resolvingNotes.jsx";
 import RhythmicPatterns from "./pages/rhythmicPatterns/rhythmicPatterns.jsx";
+import Eq from "./pages/eq/eq.jsx";
 
 const pages = {
     start: Start,
     singleNote: SingleNote,
     resolvingNotes: ResolvingNotes,
     rhythmicPatterns:RhythmicPatterns,
+    eq:Eq,
 }
 
 function App() {
