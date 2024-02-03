@@ -2,6 +2,8 @@ import {startSound} from "../../services/midi.js";
 import {Button} from "@mui/material";
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import NightlifeIcon from '@mui/icons-material/Nightlife';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import {initMidi} from "../../services/midiController.js";
 import {useStyles} from "./start.css.js";
 
@@ -29,6 +31,13 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
             </div>
         </Button>
         <br/><br/>
+        <Button onClick={() => startGame('eq')} variant={"outlined"}>
+            <div className={classes.gameButton}>
+                <QueryStatsIcon/>
+                EQ Recognition
+            </div>
+        </Button>
+        <br/><br/>
         <Button onClick={() => startGame('resolvingNotes')} variant={"outlined"}>
             <div className={classes.gameButton}>
                 <TrendingUpIcon/>
@@ -38,15 +47,8 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
         <br/><br/>
         <Button onClick={() => startGame('rhythmicPatterns')} variant={"outlined"}>
             <div className={classes.gameButton}>
-                <TrendingUpIcon/>
+                <NightlifeIcon/>
                 Rhythmic Patterns
-            </div>
-        </Button>
-        <br/><br/>
-        <Button onClick={() => startGame('eq')} variant={"outlined"}>
-            <div className={classes.gameButton}>
-                <TrendingUpIcon/>
-                EQ Recognition
             </div>
         </Button>
 

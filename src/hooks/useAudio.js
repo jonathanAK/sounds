@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const useAudio = (url,{playbackRate= 1}) => {
+export const useAudio = (url,{playbackRate= 1} ={}) => {
     const [audio] = useState(new Audio(url));
     audio.playbackRate = playbackRate;
 
@@ -26,5 +26,5 @@ export const useAudio = (url,{playbackRate= 1}) => {
         audio.playbackRate = playbackRate;
     }, [playbackRate])
 
-    return [play];
+    return [play, stop];
 };
