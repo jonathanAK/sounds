@@ -12,6 +12,11 @@ export const useStyles = createUseStyles({
     },
     attribute:{
         padding: 30,
+    },
+    mobileOnly:{
+        "@media screen and (min-width: 600px)": {
+            display: 'none'
+        }
     }
 })
 

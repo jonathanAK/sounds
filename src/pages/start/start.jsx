@@ -51,6 +51,13 @@ function StartPage({setCurrentPage, setSoundsLoaded}) {
                 Rhythmic Patterns
             </div>
         </Button>
+        <br/><br/><br/><br/>
+        <Button onClick={() => window.location.reload()} variant={"outlined"} className={classes.mobileOnly}>
+            <div className={classes.gameButton}>
+                <NightlifeIcon/>
+                Update
+            </div>
+        </Button>
 
         <div className={classes.attribute}>
             <h4>*The instrument samples in this app come from a variety of

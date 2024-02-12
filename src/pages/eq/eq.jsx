@@ -18,6 +18,7 @@ function Eq() {
     const [asked, setAsked] = useState(0);
     const [label, setLabel] = useState(' ');
     const [cheat, setCheat] = useState(false);
+    const [filePlaying, setFilePlaying] = useState(null);
     const [finished, setFinished] = useState(true);
 
     const classes = useStyles();
@@ -77,7 +78,7 @@ function Eq() {
         <Checkbox checked={cheat} onClick={onSetCheat}/> Cheat
         <div className={classes.options}>
             {
-                eqSettings.map((val, index)=><EqRange label={val.label} onClick={()=>onClick(index)} key={index} {...{cheat, songIndex, eqIndex: index}}/>)
+                eqSettings.map((val, index)=><EqRange label={val.label} onClick={()=>onClick(index)} key={index} {...{cheat, songIndex, eqIndex: index, filePlaying, setFilePlaying}}/>)
             }
         </div>
         <h1>{label}</h1>

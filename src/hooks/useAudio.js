@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const useAudio = (url,{playbackRate= 1} ={}) => {
-    const [audio] = useState(new Audio(url));
+    const [audio, setAudio] = useState(new Audio(url));
     audio.playbackRate = playbackRate;
 
     const play = () => {
@@ -12,6 +12,11 @@ export const useAudio = (url,{playbackRate= 1} ={}) => {
     const stop = () => {
         audio.pause();
         audio.currentTime = 0;
+    }
+
+    const change = (url) => {
+        stop();
+        setAudio(new Audio(url));
     }
 
     useEffect(() => {
@@ -26,5 +31,5 @@ export const useAudio = (url,{playbackRate= 1} ={}) => {
         audio.playbackRate = playbackRate;
     }, [playbackRate])
 
-    return [play, stop];
+    return [play, {stop, change}];
 };
