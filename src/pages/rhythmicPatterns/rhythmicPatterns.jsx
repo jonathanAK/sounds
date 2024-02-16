@@ -64,6 +64,7 @@ function RhythmicPatterns() {
       <Pattern id={'17'} {...patternProps}/>
         <h3>16th rests</h3>
         <Pattern id={'19'} {...patternProps}/>
+        <Pattern id={'22'} {...patternProps}/>
         <Pattern id={'18'} {...patternProps}/>
         <Pattern id={'20'} {...patternProps}/>
         <Pattern id={'21'} {...patternProps}/>
